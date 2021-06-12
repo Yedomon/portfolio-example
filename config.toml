@@ -76,7 +76,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Yedomon Ange Bovys Zoclanclounon, PhD Candidate"
-    subtitle = "Portfolio of Data Science and Visualization Projects"
+    subtitle = "Portfolio of Data Science, Genomics Analyses and Visualization Projects"
     buttonText = "Curriculum Vitae"
     url = "cv/"
 
@@ -173,27 +173,27 @@ disqusShortname = ""
     # by copying the corresponding map with frontmatter code.
     [[params.contact.email]]
     title = "Email"
-    email = "tedladeras (at) gmail.com"
+    email = "yedomon (at) jbnu.ac.kr"
 
     [[params.contact.phone]]
     title = "Phone"
-    phone = "(000) 000-0000 x1234"
+    phone = "(+82) 010-6568-2701"
 
     [[params.contact.address]]
     title = "Address"
-    street = "3181 SW Sam Jackson Road"
-    city = "Portland, OR 97212"
-    country = "USA"
+    street = "26 Duhyeon-gil Deokjin-gu Jeonju-si"
+    city = "Jeollabuk-do"
+    country = "Republic of Korea"
 
   # Footer section
   [params.footer]
     enable = true
-    copyright = "Ted Laderas"
+    copyright = "Yedomon Ange Bovys Zoclanclounon"
 
     # Uses font awesome icons
     [[params.footer.social]]
       icon = "fa-twitter"
-      url= "https://www.twitter.com/tladeras"
+      url= "https://twitter.com/AngeBovys27"
       label = "Twitter"
 
     #[[params.footer.social]]
@@ -208,12 +208,12 @@ disqusShortname = ""
     
     [[params.footer.social]]
       icon = "fa-github"
-      url= "https://www.github.com/laderast"
+      url= "https://github.com/Yedomon"
       label = "GitHub"
 
     [[params.footer.social]]
       icon = "fa-linkedin"
-      url= "https://www.linkedin.com/in/ted-laderas-0714a92/"
+      url= "https://www.linkedin.com/in/yedomon-ange-bovys-zoclanclounon-660a1755/"
       label = "LinkedIn"
 
     [[params.footer.quicklinks]]
