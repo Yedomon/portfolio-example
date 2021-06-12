@@ -85,29 +85,29 @@ disqusShortname = ""
   [params.tiles]
     enable = true
     # Display your showcases here.
-    [[params.tiles.showcase]]
-      title = "Project: Understanding Coffee Scores"
-      subtitle = "Does processing method influence overall score?"
-      image = "projects/coffee.png"
-      url = "projects/coffee"
+#    [[params.tiles.showcase]]
+#      title = "Project: Understanding Coffee Scores"
+#      subtitle = "Does processing method influence overall score?"
+#      image = "projects/coffee.png"
+#      url = "projects/coffee"
     
-    [[params.tiles.showcase]]
-      title = "Project: Choropleth of Ready for R Class"
-      subtitle = "Where are the Ready for R Students From?"
-      image = "projects/choropleth.png"
-      url = "projects/choropleth"
+#    [[params.tiles.showcase]]
+#      title = "Project: Choropleth of Ready for R Class"
+#      subtitle = "Where are the Ready for R Students From?"
+#      image = "projects/choropleth.png"
+#      url = "projects/choropleth"
 
-    [[params.tiles.showcase]]
-      title = "Project: Animal Crossing Tidy Tuesday"
-      subtitle = "What personality/animal combos are unique?"
-      image = "projects/ac.png"
-      url = "projects/animal_crossing"
+#    [[params.tiles.showcase]]
+#      title = "Project: Animal Crossing Tidy Tuesday"
+#      subtitle = "What personality/animal combos are unique?"
+#      image = "projects/ac.png"
+#      url = "projects/animal_crossing"
       
     [[params.tiles.showcase]]
-      title = "Project: test"
-      subtitle = "test"
+      title = "Project: Rice genome assembly with Pacbio-Hifi data"
+      subtitle = "How to assemble a genome using Hifiasm tool?"
       image = "projects/ac.png"
-      url = "projects/blog_test/_site"
+      url = "projects/pacbio-hifi"
 
     [[params.tiles.showcase]]
       title = "Course: Ready for R"
@@ -115,11 +115,11 @@ disqusShortname = ""
       image = "projects/ready4r.png"
       url = "https://ready4r.netlify.app"
 
-    [[params.tiles.showcase]]
-      title = "Course: Stats for Neuroscientists"
-      subtitle = "A Course on Statistical Image Processing for Neuroscientists new to computing"
-      image = "projects/stats4neuro.png"
-      url = "https://stats4neuro.netlify.app"
+#    [[params.tiles.showcase]]
+#      title = "Course: Stats for Neuroscientists"
+#      subtitle = "A Course on Statistical Image Processing for Neuroscientists new to computing"
+#      image = "projects/stats4neuro.png"
+#      url = "https://stats4neuro.netlify.app"
       
     [[params.tiles.showcase]]
       title = "Course: R-Bootcamp"
