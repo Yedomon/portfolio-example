@@ -106,7 +106,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Project: Rice genome assembly with Pacbio-Hifi data"
       subtitle = "How to assemble a genome using Hifiasm tool?"
-      image = "projects/ac.png"
+      image = "projects/rice.jpg"
       url = "projects/pacbio-hifi"
 
     [[params.tiles.showcase]]
