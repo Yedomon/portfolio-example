@@ -109,11 +109,11 @@ disqusShortname = ""
       image = "projects/rice.jpg"
       url = "projects/pacbio-hifi"
 
-    [[params.tiles.showcase]]
-      title = "Course: Ready for R"
-      subtitle = "A gentle introduction to the R and the tidyverse"
-      image = "projects/ready4r.png"
-      url = "https://ready4r.netlify.app"
+#    [[params.tiles.showcase]]
+#      title = "Course: Ready for R"
+#      subtitle = "A gentle introduction to the R and the tidyverse"
+#      image = "projects/ready4r.png"
+#      url = "https://ready4r.netlify.app"
 
 #    [[params.tiles.showcase]]
 #      title = "Course: Stats for Neuroscientists"
