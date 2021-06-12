@@ -42,8 +42,8 @@ disqusShortname = ""
     title = "Yedomon Ange Bovys Zoclanclounon, PhD Candidate"
     subtitle = "Data Scientist, Bioinformatician, and Plant Breeder"
     menu = "Menu"
-    # Optional logo as brand stored in img/
-    # logo = "logo.png"
+      Optional logo as brand stored in img/
+      logo = "profile.jpg"
 
     [[params.navigation.links]]
       name = "Home"
