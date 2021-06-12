@@ -1,0 +1,259 @@
+---
+title: ""
+date: "`r Sys.Date()`"
+output:
+  rmdformats::downcute:
+    self_contained: true
+---
+
+
+```{r setup, include=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+# Context
+
+<p style="text-align:justify;">With the rise of long-reads sequencing technologies, it is now possible to get tens of Kb fragments reads. Recently, the advent of high fidelity Pacbio long-reads drastically improve the accuracy of SMRT Sequencing platforms. In this post, I will test the genome assembly of rice genome using [Hifiasm](https://github.com/chhylp123/hifiasm) assembler.</p>
+
+
+
+
+
+
+
+# Installation
+
+For the installation, I proceed like recommended by the developer.
+
+
+
+```bash
+
+$ sudo git clone https://github.com/chhylp123/hifiasm
+
+$ cd hifiasm && make
+
+```
+
+Note: Make sure you have installed **g++** and **zlib** dependencies.
+
+I am using a Centos 7 distribution. So I installed **zlib** and **g++** following the code:
+
+
+
+```bash
+
+$ sudo yum install gcc-c++
+
+
+$ sudo yum install zlib-devel
+
+```
+
+
+
+# Data retrieving
+
+<p style="text-align:justify;">For this assembly execution, I will use the rice ***O. sativa*** MH63 Hifi data available [here](ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR996/001/SRR9969481/SRR9969481_subreads.fastq.gz). I grabbed the data set from European Nucleotide Archive [(ENA)](https://www.ebi.ac.uk/ena/browser/home) using the following accession number **SRR9969481** </p>
+
+
+
+
+```bash
+
+
+# Download the data
+
+
+$ wgetftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR996/001/SRR9969481/SRR9969481_subreads.fastq.gz
+
+
+# Rename the data
+
+$ mv SRR9969481_subreads.fastq.gz Rice.fastq.gz
+
+
+# Create a link in my working directory
+
+
+$ ln -fs ~/datafiles/002_o.sat.MH63_PacBio.HiFi.14kb/Rice.fastq.gz .
+
+
+```
+
+
+
+
+# Running
+
+
+
+Using vim text editor I wrote a small bash script named run_hifiasm.sh:
+
+
+
+
+```bash
+
+
+#!/bin/bash
+
+set -e
+
+
+~/program/hifiasm/hifiasm -o Rice.asm -t 32 Rice.fastq.gz # assemble the genome
+
+
+
+awk '/^S/{print ">"$2;print $3}' Rice.asm.p_ctg.gfa > Rice.asm.p_ctg.fa # get primary contigs in FASTA
+
+
+
+```
+
+
+Then I ran the bash using the following code:
+
+
+```bash
+
+$ /usr/bin/time -o out.ram.time.txt -v bash run_hifiasm.sh 2> log.hifiasm & 
+
+
+```
+
+
+Then I type **exit** to put in background the running process.
+
+
+# Results
+
+
+Let's check the assembly statistics
+
+
+```bash
+
+$ assembly-stats Rice.asm.p_ctg.fa
+
+
+```
+
+
+I have got the following assembly statistics:
+
+
+```bash
+
+
+sum = 421362451, n = 1225, ave = 343969.35, largest = 37513714
+N50 = 13841853, n = 12
+N60 = 13500458, n = 15
+N70 = 12402620, n = 18
+N80 = 10695965, n = 22
+N90 = 5876907, n = 27
+N100 = 8552, n = 1225
+N_count = 0
+Gaps = 0
+
+
+```
+
+Here are some characteristics related to the running process:
+
+
+
+```bash
+
+
+Command being timed: "bash run_hifiasm.sh"
+        User time (seconds): 108396.17
+        System time (seconds): 1079.09
+        Percent of CPU this job got: 2615%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09:46
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 21640460
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 7
+        Minor (reclaiming a frame) page faults: 269598163
+        Voluntary context switches: 11845273
+        Involuntary context switches: 1155532
+        Swaps: 0
+        File system inputs: 20530400
+        File system outputs: 13984408
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+
+
+```
+
+
+
+
+# Comments
+
+<p style="text-align:justify;">Hifiasm [**(Cheng et al., 2021)**](https://www.nature.com/articles/s41592-020-01056-5.epdf?sharing_token=gOs_Vf3Mp87PwxwOWBR9TdRgN0jAjWel9jnR3ZoTv0PEptI9_4gtBx6ljxr0whf0cYzRf6jNFncOK-h9I2pNj7zgjAjzTvz5DZ6OR5woNG7_ZnL517PlPbK8h-g9oucxb3hTlS62DXkNKpafRKz0oqAvl8bMAcGgXyVIDKdNBME%3D&s=03) is incredibly fast. A total of **~18 mn** (system time) to assemble a **~430 Mb** [(**Yu et al., 2002**)](https://science.sciencemag.org/content/296/5565/79) genome with **32 cores**.</p>
+
+
+
+
+
+
+Table 1: Basics assembly statistics of R498 and MH63 assemblies
+
+|                | MH63        | R498       | R498       |
+| -------------- | ----------- | ---------- | ---------- |
+| Data type      | PacBio hifi | PacBio CLR | PacBio CLR |
+| Assembler      | Hifiasm     | CANU       | HERA       |
+| Assembly level | Contigs     | Chromosome | Chromosome |
+| Assembly size (bp)  | 421,362,451   | 390,983,850  | 391,626,037  |
+| Contigs number | 1,225        | 14         | 12         |
+| Largest contig (bp) | 37,513,714    | 44,361,539   | 45,881,347   |
+| N50 (bp)            | 13,841,853    | 31,778,392   | 31,347,481   |
+| L50            | 12          | 6          | 6          |
+
+
+
+
+
+
+<p style="text-align:justify;">The peak memory was also low **21.64 MB**, showing that Hifiasm is less memory consuming. The Hifiasm assembly size was **421 Mbp**, representing **97.90%** of the estimated size. Besides, the contiguity is quite high (**N50 = 13.84 Mbp**) compared to the recent Pacbio CLR, linkage mapping and fosmid-based assembly released by [**Du et al. (2017)**](https://www.nature.com/articles/ncomms15324). A basic comparison with the chromosomal-scale assemblies from CANU [**(Koren et al., 2017)**](https://genome.cshlp.org/content/27/5/722)  and HERA [**(Du and Liang, 2019)**](https://www.nature.com/articles/s41467-019-13355-3) assemblers with PacBio CLR data (Table 1) showed that the Hifiasm assembly is quite good for Hi-C scaffolding. </p>
+
+
+
+
+# Cited literature 
+
+- [Cheng et al. 2021 | Haplotype-resolved de novo assembly using phased assembly graphs with hifiasm](https://www.nature.com/articles/s41592-020-01056-5.epdf?sharing_token=gOs_Vf3Mp87PwxwOWBR9TdRgN0jAjWel9jnR3ZoTv0PEptI9_4gtBx6ljxr0whf0cYzRf6jNFncOK-h9I2pNj7zgjAjzTvz5DZ6OR5woNG7_ZnL517PlPbK8h-g9oucxb3hTlS62DXkNKpafRKz0oqAvl8bMAcGgXyVIDKdNBME%3D&s=03)
+
+- [Du et al. 2017 | Sequencing and de novo assembly of a near complete indica rice genome](https://www.nature.com/articles/ncomms15324#Tab2)
+
+
+- [Du and Liang 2019 | Assembly of chromosome-scale contigs by efficiently resolving repetitive sequences with long reads](https://www.nature.com/articles/s41467-019-13355-3)
+
+
+- [Koren et al. 2017 | Canu: scalable and accurate long-read assembly via adaptive k-mer weighting and repeat separation](https://genome.cshlp.org/content/27/5/722)
+
+
+- [Yu et al. 2020 | A Draft Sequence of the Rice Genome (Oryza sativa L. ssp. indica)](https://science.sciencemag.org/content/296/5565/79)
+
+
