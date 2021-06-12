@@ -121,17 +121,17 @@ disqusShortname = ""
 #      image = "projects/stats4neuro.png"
 #      url = "https://stats4neuro.netlify.app"
       
-    [[params.tiles.showcase]]
-      title = "Course: R-Bootcamp"
-      subtitle = "An interactive introduction to the tidyverse"
-      image = "projects/r-bootcamp.jpg"
-      url = "https://r-bootcamp.netlify.app"
+#    [[params.tiles.showcase]]
+#      title = "Course: R-Bootcamp"
+#      subtitle = "An interactive introduction to the tidyverse"
+#      image = "projects/r-bootcamp.jpg"
+#      url = "https://r-bootcamp.netlify.app"
 
-    [[params.tiles.showcase]]
-      title = "Workshop: A gRadual Introduction to Shiny"
-      subtitle = "A short workshop introducing basic shiny programming concepts"
-      #image = "projects/r-bootcamp.jpg"
-      url = "https://laderast.github.io/gradual_shiny/"
+#    [[params.tiles.showcase]]
+#      title = "Workshop: A gRadual Introduction to Shiny"
+#      subtitle = "A short workshop introducing basic shiny programming concepts"
+#      #image = "projects/r-bootcamp.jpg"
+#      url = "https://laderast.github.io/gradual_shiny/"
 
     # You can make more showcases by copy and pasting the code above
 
