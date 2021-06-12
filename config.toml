@@ -104,10 +104,10 @@ disqusShortname = ""
       url = "projects/animal_crossing"
       
     [[params.tiles.showcase]]
-      title = "Project: awk-recipe1"
-      subtitle = "awk for genomic file manipulation"
+      title = "Project: test"
+      subtitle = "test"
       image = "projects/ac.png"
-      url = "projects/awk-recipe1"
+      url = "projects/blog_test"
 
     [[params.tiles.showcase]]
       title = "Course: Ready for R"
