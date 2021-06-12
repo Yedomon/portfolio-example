@@ -102,6 +102,12 @@ disqusShortname = ""
       subtitle = "What personality/animal combos are unique?"
       image = "projects/ac.png"
       url = "projects/animal_crossing"
+      
+    [[params.tiles.showcase]]
+      title = "Project: awk-recipe1"
+      subtitle = "awk for genomic file manipulation"
+      image = "projects/ac.png"
+      url = "projects/awk-recipe1"
 
     [[params.tiles.showcase]]
       title = "Course: Ready for R"
