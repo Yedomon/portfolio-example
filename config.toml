@@ -108,6 +108,12 @@ disqusShortname = ""
       subtitle = "How to assemble a genome using Hifiasm tool?"
       image = "projects/rice.jpg"
       url = "projects/pacbio-hifi"
+      
+    [[params.tiles.showcase]]
+      title = "Workshop: R for geographic map: Session 2 : Manipulate a raster data in R"
+      subtitle = "How to extract informations from a raster in R?"
+      image = "projects/raster_map.png"
+      url = "projects/r_gis_raster"
 
 #    [[params.tiles.showcase]]
 #      title = "Course: Ready for R"
